@@ -1,6 +1,6 @@
 # khajo
 
-A new Flutter project.
+Mobile Application developed using flutter and dart, with the preliminary planning created by Figma. Khajo is used to help those with tough dinner decisions by narrowing down their options using a series of questions.
 
 ## Getting Started
 
