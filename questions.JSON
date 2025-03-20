@@ -1,0 +1,11 @@
+[
+    {
+      "question": "What cuisine do you prefer?",
+      "options": ["Italian", "Chinese", "Mexican", "Indian"]
+    },
+    {
+      "question": "Do you prefer dine-in or delivery?",
+      "options": ["Dine-in", "Delivery", "No preference", "Other"]
+    }
+  ]
+  
