@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class CustomMap extends StatelessWidget {
-  const CustomMap({super.key, required this.lat, required this.lon});
+class CustomMap extends StatefulWidget {
+  final double lat;
+  final double lon;
 
-  final double lat; // Latitude for the map center
-  final double lon; // Longitude for the map center
+  const CustomMap({
+    super.key,
+    required this.lat,
+    required this.lon,
+  });
+
+  @override
+  _CustomMapState createState() => _CustomMapState();
+}
+
+class _CustomMapState extends State<CustomMap> {
+  late GoogleMapController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +32,14 @@ class CustomMap extends StatelessWidget {
             ),
           ],
         ),
-        child: FlutterMap(
-          options: MapOptions(
-            center: LatLng(lat, lon), // Center at given latitude/longitude
+        child: GoogleMap(
+          initialCameraPosition: CameraPosition(
+            target: LatLng(widget.lat, widget.lon),
             zoom: 14.0,
-            maxZoom: 18.0,
-            minZoom: 3.0,
           ),
-          children: [
-            TileLayer(
-              urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-              userAgentPackageName: 'com.example.app',
-            ),
-          ],
+          onMapCreated: (GoogleMapController controller) {
+            _controller = controller;
+          },
         ),
       ),
     );
